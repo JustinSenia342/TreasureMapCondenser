@@ -11,6 +11,13 @@ class TreasureMapCondenser{
         TreasureMapProcessor.processTreasureMap("treasureMap.txt", mapDirectionsDataObject);
 
         System.out.println(mapDirectionsDataObject.getDirectionMiles("W"));
+
+        mapDirectionsDataObject.calculateTotalDistance();
+        mapDirectionsDataObject.calculateTargetVector();
+        mapDirectionsDataObject.calculateDirectPathDistance();
+
+        mapDirectionsDataObject.getTargetCoordinateInfo();
+
     }
 
 }

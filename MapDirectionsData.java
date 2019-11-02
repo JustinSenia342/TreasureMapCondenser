@@ -44,6 +44,11 @@ public class MapDirectionsData{
         return MapDirectionSums.get(direction);
     }
 
+    public void getTargetCoordinateInfo(){
+        System.out.println("X Coord: " + cartesianTargetCoordinateX);
+        System.out.println("Y Coord: " + cartesianTargetCoordinateY);
+        System.out.println("distance (in Miles): " + directPathTotalDistance);
+    }
     
     public void calculateNextCoordinates(){
 
@@ -60,6 +65,15 @@ public class MapDirectionsData{
         directionsPathTotalDistance = directionsPathTotalDistance + MapDirectionSums.get("NW");
     }
 
+    //Finds direct path distance with pythagorean theorem (a^2 + b^2 = c^2)
+    public void calculateDirectPathDistance(){
+        double pythagoreanSideA = cartesianTargetCoordinateX * cartesianTargetCoordinateX;
+        double pythagoreanSideB = cartesianTargetCoordinateY * cartesianTargetCoordinateY;
+        double pythagoreanSideC = Math.sqrt(pythagoreanSideA + pythagoreanSideB);
+
+        directPathTotalDistance = pythagoreanSideC;
+    }
+
     //calculates final target coordinates with aggregated directional distance information
     public void calculateTargetVector(){
 
@@ -67,25 +81,37 @@ public class MapDirectionsData{
         cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("N");
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "NE"
-        //cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("NE");
+        //Assume direction is perfect, forming a 45 45 90 right triangle with 
+        //path travelled being the hypotenuse so (LegX = LegY = Hypotenuse / Math.sqrt(2))
+        cartesianTargetCoordinateX = cartesianTargetCoordinateX + (MapDirectionSums.get("NE") / Math.sqrt(2));
+        cartesianTargetCoordinateY = cartesianTargetCoordinateY + (MapDirectionSums.get("NE") / Math.sqrt(2));
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "E"
         cartesianTargetCoordinateY = cartesianTargetCoordinateY + MapDirectionSums.get("E");
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "SE"
-        //cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("SE");
+        //Assume direction is perfect, forming a 45 45 90 right triangle with 
+        //path travelled being the hypotenuse so (LegX = LegY = Hypotenuse / Math.sqrt(2))
+        cartesianTargetCoordinateX = cartesianTargetCoordinateX + (MapDirectionSums.get("SE") / Math.sqrt(2));
+        cartesianTargetCoordinateY = cartesianTargetCoordinateY - (MapDirectionSums.get("SE") / Math.sqrt(2));
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "S"
         cartesianTargetCoordinateX = cartesianTargetCoordinateX - MapDirectionSums.get("S");
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "SW"
-        //cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("SW");
+        //Assume direction is perfect, forming a 45 45 90 right triangle with 
+        //path travelled being the hypotenuse so (LegX = LegY = Hypotenuse / Math.sqrt(2))
+        cartesianTargetCoordinateX = cartesianTargetCoordinateX - (MapDirectionSums.get("SW") / Math.sqrt(2));
+        cartesianTargetCoordinateY = cartesianTargetCoordinateY - (MapDirectionSums.get("SW") / Math.sqrt(2));
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "W"
         cartesianTargetCoordinateY = cartesianTargetCoordinateY - MapDirectionSums.get("W");
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "NW"
-        //cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("NW");
+        //Assume direction is perfect, forming a 45 45 90 right triangle with 
+        //path travelled being the hypotenuse so (LegX = LegY = Hypotenuse / Math.sqrt(2))
+        cartesianTargetCoordinateX = cartesianTargetCoordinateX - (MapDirectionSums.get("NW") / Math.sqrt(2));
+        cartesianTargetCoordinateY = cartesianTargetCoordinateY + (MapDirectionSums.get("NW") / Math.sqrt(2));
 
     }
 }
