@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TreasureMapCondenser",
+            "request": "launch",
+            "mainClass": "TreasureMapCondenser",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TreasureMapProcessor",
+            "request": "launch",
+            "mainClass": "TreasureMapProcessor",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - DirectionsLineParser",
             "request": "launch",
             "mainClass": "DirectionsLineParser",
