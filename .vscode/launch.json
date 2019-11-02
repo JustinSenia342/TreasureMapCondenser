@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DirectionsLineParser",
+            "request": "launch",
+            "mainClass": "DirectionsLineParser",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MapDirectionsAggregator",
+            "request": "launch",
+            "mainClass": "MapDirectionsAggregator",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TreasureMapDirectionsGenerator",
+            "request": "launch",
+            "mainClass": "TreasureMapDirectionsGenerator",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+Walk, 10 hours 20 minutes, N
+Horse gallop, 17 minutes, S
+Horse trot, 5 hours 14 minutes, SW
+Run, 10 hours 11 minutes, SE
+Run, 2 hours 23 minutes, N
+Walk, 4 minutes, NW
+Horse trot, 20 minutes, E
+Run, 11 minutes, W
+Elephant ride, 4 hours, E
+Horse trot, 55 minutes, S
+Horse gallop, 5 minutes, SE
+Horse gallop, 3 hours 59 minutes, E
+Run, 8 hours, S
+Walk, 16 minutes, S
+Elephant ride, 8 hours 29 minutes, S
+Walk, 20 minutes, S
+Horse trot, 2 hours 54 minutes, E
+Elephant ride, 54 minutes, E
+Run, 4 hours 34 minutes, N
+Walk, 6 hours 33 minutes, SE
