@@ -2,6 +2,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/*
+    Written By: Justin Senia
+    Written: 11/01/2019
+    Last Updated: 11/03/2019
+    TresureMapProcessor.java (class): 
+*/
+
 class TreasureMapProcessor{
 
     public static void processTreasureMap(String treasureMapFile, MapDirectionsData mapDirectionsDataObject){

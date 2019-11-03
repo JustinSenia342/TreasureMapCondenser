@@ -1,6 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
+/*
+    Written By: Justin Senia
+    Written: 11/02/2019
+    Last Updated: 11/03/2019
+    TreasureMapCondenserGui.java (class): 
+*/
+
 class TreasureMapCondenserGui{
 
     public static void main(String[] args){
@@ -55,7 +62,7 @@ class TreasureMapCondenserGui{
 
 
         genNewMap.addActionListener(event -> textArea.append(TreasureMapDirectionsGenerator.GenerateNewMap(Integer.parseInt(mapStepsInput.getText()))));
-        parseMap.addActionListener(event -> textArea.append(TreasureMapCondenser.condenseTreasureMap()));
+        parseMap.addActionListener(event -> textArea.append(tMapCondenser.condenseTreasureMap()));
     }
 
 }

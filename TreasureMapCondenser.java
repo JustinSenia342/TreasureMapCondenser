@@ -1,4 +1,11 @@
 
+/*
+    Written By: Justin Senia
+    Written: 11/02/2019
+    Last Updated: 11/02/2019
+    TreasureMapCondenser.java (class): 
+*/
+
 class TreasureMapCondenser{
 
     MapDirectionsData mapDirectionsDataObject;
@@ -15,6 +22,7 @@ class TreasureMapCondenser{
         mapDirectionsDataObject.calculateTargetVector();
         mapDirectionsDataObject.calculateDirectPathDistance();
         mapDirectionsDataObject.calculateDirectPathBearing();
+        mapDirectionsDataObject.calculateBearingPolarDirection();
 
         return mapDirectionsDataObject.getTargetCoordinateInfo();
     }

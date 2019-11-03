@@ -3,6 +3,13 @@ import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/*
+    Written By: Justin Senia
+    Written: 11/01/2019
+    Last Updated: 11/01/2019
+    TreasureMapDirectionsGenerator.java (class): 
+*/
+
 class TreasureMapDirectionsGenerator{
    
    public static String GenerateNewMap(int numberOfSteps){
