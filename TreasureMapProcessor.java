@@ -10,7 +10,7 @@ class TreasureMapProcessor{
             reader = new BufferedReader(new FileReader("treasureMap.txt"));
             String line = reader.readLine();
             while (line != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 DirectionsLineParser.parseLine(line, mapDirectionsDataObject);
                 // read next line
                 line = reader.readLine();

@@ -16,6 +16,8 @@ public class MapDirectionsData{
     double directionsPathTotalDistance;
     double directPathTotalDistance;
 
+    double directPathBearing;
+
     public MapDirectionsData(){
         MapDirectionSums.put("N", 0.0);
         MapDirectionSums.put("NE", 0.0);
@@ -34,6 +36,8 @@ public class MapDirectionsData{
     
         directionsPathTotalDistance = 0;
         directPathTotalDistance = 0;
+
+        directPathBearing = 0;
     }
 
     public void setDirectionMiles(String direction, double miles){
@@ -47,7 +51,9 @@ public class MapDirectionsData{
     public void getTargetCoordinateInfo(){
         System.out.println("X Coord: " + cartesianTargetCoordinateX);
         System.out.println("Y Coord: " + cartesianTargetCoordinateY);
-        System.out.println("distance (in Miles): " + directPathTotalDistance);
+        System.out.println("distance of straight path (Miles): " + directPathTotalDistance);
+        System.out.println("distance in Original Instructions (Miles): " + directionsPathTotalDistance);
+        System.out.println("bearing from Origin (in Degrees): " + directPathBearing);
     }
     
     public void calculateNextCoordinates(){
@@ -72,6 +78,81 @@ public class MapDirectionsData{
         double pythagoreanSideC = Math.sqrt(pythagoreanSideA + pythagoreanSideB);
 
         directPathTotalDistance = pythagoreanSideC;
+    }
+
+    //Calculates bearing for travelling from origin
+    public void calculateDirectPathBearing(){
+        
+        //directPathBearing = 360.00 + Math.toDegrees(Math.atan(cartesianTargetCoordinateX / cartesianTargetCoordinateY));
+
+        //directPathBearing = Math.toDegrees(Math.atan(5 / 3));
+
+        double xCoord = -3.00;
+        double yCoord = 1.00;
+        double hypot = Math.sqrt(10.00);
+
+        //Q1
+        if (xCoord >= 0 && yCoord >= 0){
+            directPathBearing = Math.atan(xCoord / yCoord);
+            directPathBearing = Math.toDegrees(directPathBearing);
+        }
+        //Q4
+        else if (xCoord >= 0 && yCoord < 0){
+            directPathBearing = Math.acos(xCoord / hypot);
+            directPathBearing = Math.toDegrees(directPathBearing);
+            directPathBearing = directPathBearing + 90.00;
+        }
+        //Q3
+        else if (xCoord < 0 && yCoord < 0){
+            directPathBearing = Math.atan(xCoord / yCoord);
+            directPathBearing = Math.toDegrees(directPathBearing);
+            directPathBearing = directPathBearing + 180.00;
+        }
+        //Q2
+        else if (xCoord < 0 && yCoord >= 0){
+            directPathBearing = Math.asin(yCoord / hypot);
+            directPathBearing = Math.toDegrees(directPathBearing);
+            directPathBearing = directPathBearing + 270.00;
+        }
+
+        //directPathBearing = Math.tan(xCoord / yCoord);
+        //directPathBearing = Math.toDegrees(directPathBearing);
+
+        //all Q1
+        //directPathBearing = Math.tan(5.00 / 5.00);
+
+        //Cos Q4
+        //directPathBearing = Math.cos(5.00 / -5.00);
+
+        //Tan Q3
+        //directPathBearing = Math.tan(-5.00 / -5.00);
+
+        //Sin Q2
+        //directPathBearing = Math.sin(-5.00 / -5.00);
+
+        //directPathBearing = Math.toDegrees(directPathBearing);
+
+        //if (directPathBearing == 360){
+        //    directPathBearing = 0;
+        //}
+
+        //directPathBearing = directPathBearing * (180.00 / Math.PI);
+        //directPathBearing = directPathBearing;
+        /*
+        //handles case where both coordinates are equal to origin
+        if(cartesianTargetCoordinateX == 0 && cartesianTargetCoordinateY == 0){
+            System.out.println("Target Is Origin, No Travel Required");
+        }
+        //handles 0 (or) 360 degree and 180 degree cases 
+        else if (cartesianTargetCoordinateX >= 0 &&){
+            
+        }
+        //handles 90 or 270 degree cases
+
+        //handles 1 through 89 degree cases
+
+        //handles 91 through 179 degree cases
+        */
     }
 
     //calculates final target coordinates with aggregated directional distance information

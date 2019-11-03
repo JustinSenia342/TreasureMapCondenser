@@ -67,9 +67,9 @@ class DirectionsLineParser{
         //System.out.println(totalMinutes);
         //System.out.println(parsedSegments[2]);
 
-        System.out.print(movementType);
-        System.out.print(" " + totalMinutes + " ");
-        System.out.println(movementDirection);
+        //System.out.print(movementType);
+        //System.out.print(" " + totalMinutes + " ");
+        //System.out.println(movementDirection);
 
         //Walk          - 3 mph
         //Run           - 6 mph

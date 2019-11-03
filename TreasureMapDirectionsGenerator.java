@@ -48,7 +48,7 @@ class TreasureMapDirectionsGenerator{
 
          FileWriter treasureMapWriter = new FileWriter("treasureMap.txt");
 
-         for (int i = 0; i < 20; i++){
+         for (int i = 0; i < 1000; i++){
             treasureMapWriter.write(movementTypeArray[randomGen.nextInt(5)] + ",");
 
             if (randomGen.nextInt(2) == 1){

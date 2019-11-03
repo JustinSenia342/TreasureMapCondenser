@@ -15,7 +15,7 @@ class TreasureMapCondenser{
         mapDirectionsDataObject.calculateTotalDistance();
         mapDirectionsDataObject.calculateTargetVector();
         mapDirectionsDataObject.calculateDirectPathDistance();
-
+        mapDirectionsDataObject.calculateDirectPathBearing();
         mapDirectionsDataObject.getTargetCoordinateInfo();
 
     }
