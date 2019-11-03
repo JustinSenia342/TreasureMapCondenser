@@ -48,12 +48,18 @@ public class MapDirectionsData{
         return MapDirectionSums.get(direction);
     }
 
-    public void getTargetCoordinateInfo(){
-        System.out.println("X Coord: " + cartesianTargetCoordinateX);
-        System.out.println("Y Coord: " + cartesianTargetCoordinateY);
-        System.out.println("distance of straight path (Miles): " + directPathTotalDistance);
-        System.out.println("distance in Original Instructions (Miles): " + directionsPathTotalDistance);
-        System.out.println("bearing from Origin (in Degrees): " + directPathBearing);
+    public String getTargetCoordinateInfo(){
+        //System.out.println("X Coord: " + cartesianTargetCoordinateX);
+        //System.out.println("Y Coord: " + cartesianTargetCoordinateY);
+        //System.out.println("distance of straight path (Miles): " + directPathTotalDistance);
+        //System.out.println("distance in Original Instructions (Miles): " + directionsPathTotalDistance);
+        //System.out.println("bearing from Origin (in Degrees): " + directPathBearing);
+
+        return  "X Coordinate: " + cartesianTargetCoordinateX + "\n" +
+                "Y Coordinate: " + cartesianTargetCoordinateY + "\n" +
+                "Distance Of Direct Path: " + directPathTotalDistance + " Miles\n" +
+                "Distance Of Original Instructions: " + directionsPathTotalDistance + " Miles\n" +
+                "Bearing from Origin Point: " + directPathBearing + " Degrees\n";
     }
     
     public void calculateNextCoordinates(){
@@ -87,72 +93,54 @@ public class MapDirectionsData{
 
         //directPathBearing = Math.toDegrees(Math.atan(5 / 3));
 
-        double xCoord = -3.00;
-        double yCoord = 1.00;
-        double hypot = Math.sqrt(10.00);
+        double xCoord = cartesianTargetCoordinateX;
+        double yCoord = cartesianTargetCoordinateY;
+        double hypot = directPathTotalDistance;
 
-        //Q1
-        if (xCoord >= 0 && yCoord >= 0){
+        //Case: Destination is at Origin
+        if (xCoord == 0.00 && yCoord == 0.00){
+            directPathBearing = 0.00;
+        }
+        //Case: N Axis
+        else if ((xCoord == 0.00 || xCoord == 360.00) && yCoord > 0.00){
+            directPathBearing = 0.00;
+        }
+        //Case: Q1 (Uses arctan)
+        else if (xCoord > 0.00 && yCoord > 0.00){
             directPathBearing = Math.atan(xCoord / yCoord);
             directPathBearing = Math.toDegrees(directPathBearing);
         }
-        //Q4
-        else if (xCoord >= 0 && yCoord < 0){
+        //Case: E Axis
+        else if (xCoord > 0.00 && yCoord == 0.00){
+            directPathBearing = 90.00;
+        }
+        //Case: Q4 (Must Use arccos)
+        else if (xCoord > 0.00 && yCoord < 0.00){
             directPathBearing = Math.acos(xCoord / hypot);
             directPathBearing = Math.toDegrees(directPathBearing);
             directPathBearing = directPathBearing + 90.00;
         }
-        //Q3
-        else if (xCoord < 0 && yCoord < 0){
+        //Case: S Axis
+        else if (xCoord == 0.00 && yCoord < 0.00){
+            directPathBearing = 180.00;
+        }
+        //Case: Q3 (Must Use arctan)
+        else if (xCoord < 0.00 && yCoord < 0.00){
             directPathBearing = Math.atan(xCoord / yCoord);
             directPathBearing = Math.toDegrees(directPathBearing);
             directPathBearing = directPathBearing + 180.00;
         }
-        //Q2
-        else if (xCoord < 0 && yCoord >= 0){
+        //Case: W Axis
+        else if (xCoord < 0.00 && yCoord == 0.00){
+            directPathBearing = 270.00;
+        }
+        //Case: Q2 (Must Use arcsin)
+        else if (xCoord < 0.00 && yCoord > 0.00){
             directPathBearing = Math.asin(yCoord / hypot);
             directPathBearing = Math.toDegrees(directPathBearing);
             directPathBearing = directPathBearing + 270.00;
         }
 
-        //directPathBearing = Math.tan(xCoord / yCoord);
-        //directPathBearing = Math.toDegrees(directPathBearing);
-
-        //all Q1
-        //directPathBearing = Math.tan(5.00 / 5.00);
-
-        //Cos Q4
-        //directPathBearing = Math.cos(5.00 / -5.00);
-
-        //Tan Q3
-        //directPathBearing = Math.tan(-5.00 / -5.00);
-
-        //Sin Q2
-        //directPathBearing = Math.sin(-5.00 / -5.00);
-
-        //directPathBearing = Math.toDegrees(directPathBearing);
-
-        //if (directPathBearing == 360){
-        //    directPathBearing = 0;
-        //}
-
-        //directPathBearing = directPathBearing * (180.00 / Math.PI);
-        //directPathBearing = directPathBearing;
-        /*
-        //handles case where both coordinates are equal to origin
-        if(cartesianTargetCoordinateX == 0 && cartesianTargetCoordinateY == 0){
-            System.out.println("Target Is Origin, No Travel Required");
-        }
-        //handles 0 (or) 360 degree and 180 degree cases 
-        else if (cartesianTargetCoordinateX >= 0 &&){
-            
-        }
-        //handles 90 or 270 degree cases
-
-        //handles 1 through 89 degree cases
-
-        //handles 91 through 179 degree cases
-        */
     }
 
     //calculates final target coordinates with aggregated directional distance information

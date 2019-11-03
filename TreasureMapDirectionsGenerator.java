@@ -5,33 +5,11 @@ import java.io.IOException;
 
 class TreasureMapDirectionsGenerator{
    
-   public static void main(String[] args){
+   public static String GenerateNewMap(int numberOfSteps){
 
-
-      /*
-      Walk, 20 mins, N
-      Run, 1 hour, E
-      Horse trot, 3 hours, NW
-      Elephant ride, 1 hour 30 mins, SE
-      Horse gallop, 20 mins, SE
-      Walk, 30 mins, SW
-      Horse trot, 1 hour 1 min, W
-
-      Multiple teams of treasure hunters have departed to follow the map's
-      instructions.
-
-      Your team decided, based on the fact that there are more than 1000 instructions,
-      that you are better off parsing the map with a computer and then just following
-      a straight line towards the treasure.
-
-      You made some generalizations on the speed of the modes of transportation and
-      came up with the following approximations:
-         Walk          - 3 mph
-         Run           - 6 mph
-         Horse trot    - 4 mph
-         Horse gallop  - 15 mph
-         Elephant ride - 6 mph
-         */
+      if (numberOfSteps <= 0){
+         return "ERROR: Please Enter Valid Int Number For Number Of Steps Value.";
+      }
 
       String[] movementTypeArray = new String[]{"Walk", "Run", "Horse trot", "Horse gallop", "Elephant ride"};
       String[] movementDirectionArray = new String[]{"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
@@ -48,7 +26,7 @@ class TreasureMapDirectionsGenerator{
 
          FileWriter treasureMapWriter = new FileWriter("treasureMap.txt");
 
-         for (int i = 0; i < 1000; i++){
+         for (int i = 0; i < numberOfSteps; i++){
             treasureMapWriter.write(movementTypeArray[randomGen.nextInt(5)] + ",");
 
             if (randomGen.nextInt(2) == 1){
@@ -96,9 +74,12 @@ class TreasureMapDirectionsGenerator{
 
          treasureMapWriter.close();
 
+         return "New Treasure Map Generated Successfully.";
+
       } catch (IOException e) {
          System.out.println("An error occurred");
          e.printStackTrace();
+         return "Error Occured During New Treasure Map Generation, See Logs for Details.";
       }
 
    }

@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - PointsEx",
+            "request": "launch",
+            "mainClass": "PointsEx",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TreasureMapCondenserGui",
+            "request": "launch",
+            "mainClass": "TreasureMapCondenserGui",
+            "projectName": "TreasureMapCondenser_6ccdc89d"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TreasureMapCondenser",
             "request": "launch",
             "mainClass": "TreasureMapCondenser",

@@ -1,23 +1,22 @@
 
-
 class TreasureMapCondenser{
 
-    public static void main(String[] args){
+    MapDirectionsData mapDirectionsDataObject;
 
-        MapDirectionsData mapDirectionsDataObject = new MapDirectionsData();
+    public TreasureMapCondenser(){
+        mapDirectionsDataObject = new MapDirectionsData();
+    }
 
-        System.out.println(mapDirectionsDataObject.getDirectionMiles("W"));
+    public String condenseTreasureMap(){
 
         TreasureMapProcessor.processTreasureMap("treasureMap.txt", mapDirectionsDataObject);
-
-        System.out.println(mapDirectionsDataObject.getDirectionMiles("W"));
 
         mapDirectionsDataObject.calculateTotalDistance();
         mapDirectionsDataObject.calculateTargetVector();
         mapDirectionsDataObject.calculateDirectPathDistance();
         mapDirectionsDataObject.calculateDirectPathBearing();
-        mapDirectionsDataObject.getTargetCoordinateInfo();
 
+        return mapDirectionsDataObject.getTargetCoordinateInfo();
     }
 
 }
