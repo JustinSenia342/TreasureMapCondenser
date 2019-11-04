@@ -1,3 +1,5 @@
+package src.main.java.tmapcondenser.model;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +21,7 @@ class DirectionsLineParser{
 
     // "unparsedLine" Ex: "Run, 9 hours 5 minutes, E", "Walk, 14 minutes, E", etc.
     // "mapDirectionsDataObject" Passed from "TreasureMapCondenser" -> TreasureMapProcessor -> DirectionsLineParser 
-    public static void parseLine(String unparsedLine, MapDirectionsData mapDirectionsDataObject){
+    static void parseLine(String unparsedLine, MapDirectionsData mapDirectionsDataObject){
 
         // Splitting unparsedLine parameter into 3 pieces (based on location of ',')
         String[] parsedSegments = unparsedLine.split(",");
@@ -131,14 +133,6 @@ class DirectionsLineParser{
         // the mapDirectionsDataObject's hashmap 
         mapDirectionsDataObject.setDirectionMiles(movementDirection, totalMiles);
 
-        //************************* MAY BE Unecessary, leftovers*/
-        //resetting values for variable re-use
-        parsedHourValue = 0;
-        parsedMinuteValue = 0;
-        totalMinutes = 0;
-        totalMiles = 0.0;
-        movementType = "";
-        movementDirection = "";
     }
 
 }

@@ -1,0 +1,45 @@
+
+Programmer: Justin Senia
+Submission Time: 6:30pm~6:40pm 11/03/2019
+It was completed around 6:15pm, I just wanted to make sure that I wrote some detailed instructions for running everything (so that took an extra few minutes).
+
+
+- System Configuration -
+
+Used the following JDK: jdk1.8.0_231
+
+Installer for that JDK: jdk-8u231-windows-x64.exe 
+Link: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+The following environment variables are set in my version of Windows:
+JAVA_HOME = C:\Program Files\Java\jdk1.8.0_231
+JDK_HOME = C:\Program Files\Java\jdk1.8.0_231
+
+The following were added to my System path:
+C:\Program Files\Java\jdk1.8.0_231\bin
+C:\Program Files\Java\jdk1.8.0_231\jre\bin
+
+
+
+
+- To Run the program - 
+The Project root folder is called "TreasureMapCondenser" (the folder structure is based on MAVEN, with the packages divided up in the ".\TreasureMapCondenser\src\main\java\tmapcondenser\" directory").
+
+All you should need to do is run the "TreasureMapCondenserGui.java" (I compiled/ran everything just fine through visual studio code).
+
+That file is located here: .\TreasureMapCondenser\src\main\java\tmapcondenser\gui\TreasureMapCondenserGui.java
+
+The rest of the instructions on how to use it are included in the program (it also can generate it's own treasure maps based on user provided criteria for # of steps)
+
+
+
+Please let me know if you have any trouble running it, aside from random system configuration problems it should work very well for what it's intended to do (I spent a lot of time on it, and tested the heck out of it). 
+
+
+
+
+
+
+
+
+

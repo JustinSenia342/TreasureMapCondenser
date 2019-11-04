@@ -1,3 +1,5 @@
+package src.main.java.tmapcondenser.model;
+
 import java.util.HashMap;
 import java.lang.Math;
 import java.text.DecimalFormat;
@@ -11,40 +13,40 @@ import java.text.DecimalFormat;
     GUI from "TrasureMapCondenserGui.java"
 */
 
-public class MapDirectionsData{
+class MapDirectionsData{
 
     // Used to format final output
-    DecimalFormat decimalFormatter = new DecimalFormat("####0.00");
+    private DecimalFormat decimalFormatter = new DecimalFormat("####0.00");
 
     // Contains Accumulated direction based travel distances
-    HashMap<String, Double> MapDirectionSums = new HashMap<String, Double>();
+    private HashMap<String, Double> MapDirectionSums = new HashMap<String, Double>();
 
     // Ensures Origin is always set to '0'
-    final double cartesianOriginCoordinateX = 0;
-    final double cartesianOriginCoordinateY = 0;
+    private final double cartesianOriginCoordinateX = 0;
+    private final double cartesianOriginCoordinateY = 0;
 
     // Act as X,Y coordinate markers for determining Target
     // location based on parsed map directional information
-    double cartesianTargetCoordinateX;
-    double cartesianTargetCoordinateY;
+    private double cartesianTargetCoordinateX;
+    private double cartesianTargetCoordinateY;
 
     // Stores total distance from Map directions
-    double directionsPathTotalDistance;
+    private double directionsPathTotalDistance;
 
     // Stores total distance from parsed/direct path
-    double directPathTotalDistance;     
+    private double directPathTotalDistance;     
 
     // Stores bearing (in degrees, starting from North (0° or 360°), going clockwise)
     // to determine which direction needed to travel from origin to arrive at target destination
-    double directPathBearing;
+    private double directPathBearing;
 
     // Stores mnemonic direction of "directPathBearing" angle from origin
     // Used to output directions for travelling to target destination 
-    String bearingPolarDirection;
+    private String bearingPolarDirection;
 
 
     // Constructor for creating objects of this class
-    public MapDirectionsData(){
+    MapDirectionsData(){
 
         // Creating hashmap key/value pairs, and initializing them to 0.00
         MapDirectionSums.put("N", 0.0);
@@ -74,20 +76,20 @@ public class MapDirectionsData{
     // to the previous sum of miles (in a specified direction) and updating
     // the value in the "MapDirectionSums" hashmap
     // "direction" Ex: "N", "SW", "E", etc. | "miles" Ex: 34.00, 23.34843, etc.
-    public void setDirectionMiles(String direction, double miles){
+    void setDirectionMiles(String direction, double miles){
         MapDirectionSums.put(direction, MapDirectionSums.get(direction) + miles);
     }
 
     // Getter method to retrieve miles accumulated from the "MapDirectionSums" hashmap
     // "direction" Ex: "N", "SW", "E", etc...
-    public double getDirectionMiles(String direction){
+    double getDirectionMiles(String direction){
         return MapDirectionSums.get(direction);
     }
 
 
     // Getter method for returning summary of calculated information
     // for display in GUI View for the User 
-    public String getTargetCoordinateInfo(){
+    String getTargetCoordinateInfo(){
         return  "  " + "\n" +
                 "  *************************************************************************************************" + "\n" +
                 "  *                                     PARSED TREASURE MAP RESULTS                                 " + "\n" +
@@ -111,7 +113,7 @@ public class MapDirectionsData{
 
     // Calculates total distance (in Miles) of all aggregated treasure map direction data
     // Used to calculate how this program's optimization has influenced potential travel time
-    public void calculateTotalDistance(){
+    void calculateTotalDistance(){
         directionsPathTotalDistance = directionsPathTotalDistance + MapDirectionSums.get("N");
         directionsPathTotalDistance = directionsPathTotalDistance + MapDirectionSums.get("NE");
         directionsPathTotalDistance = directionsPathTotalDistance + MapDirectionSums.get("E");
@@ -125,7 +127,7 @@ public class MapDirectionsData{
 
     // Calculates direct path distance with pythagorean theorem (a^2 + b^2 = c^2)
     // Determines Direct Path Length (Hypotenuse) for use in Trigonometric "calculateDirectPathBearing" Function
-    public void calculateDirectPathDistance(){
+    void calculateDirectPathDistance(){
         double pythagoreanSideA = cartesianTargetCoordinateX * cartesianTargetCoordinateX;
         double pythagoreanSideB = cartesianTargetCoordinateY * cartesianTargetCoordinateY;
         double pythagoreanSideC = Math.sqrt(pythagoreanSideA + pythagoreanSideB);
@@ -137,7 +139,7 @@ public class MapDirectionsData{
     // Calculates bearing (in degrees) for travelling from origin straight to destination
     // Uses concepts from Trigonometry to approximate total angle based on a re-orientated
     // Unit-Circle To Base starting point from North and calculate clockwise
-    public void calculateDirectPathBearing(){
+    void calculateDirectPathBearing(){
         
         // Temp variables, renamed to make calculations easier to follow
         double xCoord = cartesianTargetCoordinateX;
@@ -195,7 +197,7 @@ public class MapDirectionsData{
     // which mnemonic should be used to describe the direction in navigation terminology.
     // Value determined by comparing bearing angle (starting at North) clockwise
     // and determining which range it falls under 
-    public void calculateBearingPolarDirection(){
+    void calculateBearingPolarDirection(){
         if ((directPathBearing >= 348.75 && directPathBearing <= 360.00) ||
             (directPathBearing >= 0.00 && directPathBearing < 11.25))
             {bearingPolarDirection = "North";}
@@ -238,7 +240,7 @@ public class MapDirectionsData{
     // Applies accumulated directional distances to coordinates beginning at origin.
     // N E S W Directions are simple addition/subtraction, but Diagonal directions require 
     // Trig Calc (45 45 90 Right Triangle) then added to each final cartesian coordinate variable.
-    public void calculateTargetVector(){
+    void calculateTargetVector(){
 
         //Calculates Target Coordinate Changes for Aggregated Miles Travelled "N"
         cartesianTargetCoordinateX = cartesianTargetCoordinateX + MapDirectionSums.get("N");
@@ -277,7 +279,7 @@ public class MapDirectionsData{
         cartesianTargetCoordinateY = cartesianTargetCoordinateY + (MapDirectionSums.get("NW") / Math.sqrt(2));
     }
 
-    public void resetObjectData(){
+    void resetObjectData(){
         // Resetting hashmap key/value pairs, and initializing them to 0.00
         MapDirectionSums.put("N", 0.0);
         MapDirectionSums.put("NE", 0.0);
